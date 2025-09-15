@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unique To-Do App</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="background">
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+  </div>
+
+  <div class="todo-container">
+    <h1>🌟 Unique To-Do App 🌟</h1>
+
+    <div class="task-input">
+      <input type="text" id="taskInput" placeholder="What’s your next mission?">
+      <input type="datetime-local" id="taskDateTime">
+      <button onclick="addTask()"><i class='bx bx-plus'></i></button>
+    </div>
+
+    <ul id="taskList" class="task-list"></ul>
+  </div>
+
+  <script>
+    const taskInput = document.getElementById("taskInput");
+    const taskDateTime = document.getElementById("taskDateTime");
+    const taskList = document.getElementById("taskList");
+
+    function addTask() {
+      const taskText = taskInput.value.trim();
+      const taskTime = taskDateTime.value;
+
+      if (taskText === "") {
+        alert("Please enter a task!");
+        return;
+      }
+
+      const li = document.createElement("li");
+      li.classList.add("task-card");
+
+      const taskSpan = document.createElement("span");
+      taskSpan.classList.add("task-text");
+      taskSpan.textContent = `${taskText} ${taskTime ? " - " + new Date(taskTime).toLocaleString() : ""}`;
+
+      const btns = document.createElement("div");
+      btns.classList.add("actions");
+
+      const completeBtn = document.createElement("button");
+      completeBtn.innerHTML = "<i class='bx bx-check'></i>";
+      completeBtn.classList.add("complete");
+      completeBtn.onclick = () => {
+        taskSpan.classList.toggle("completed");
+      };
+
+      const editBtn = document.createElement("button");
+      editBtn.innerHTML = "<i class='bx bx-edit'></i>";
+      editBtn.classList.add("edit");
+      editBtn.onclick = () => {
+        const newTask = prompt("Edit your task:", taskText);
+        if (newTask) {
+          taskSpan.textContent = `${newTask} ${taskTime ? " - " + new Date(taskTime).toLocaleString() : ""}`;
+        }
+      };
+
+      const deleteBtn = document.createElement("button");
+      deleteBtn.innerHTML = "<i class='bx bx-trash'></i>";
+      deleteBtn.classList.add("delete");
+      deleteBtn.onclick = () => li.remove();
+
+      btns.appendChild(completeBtn);
+      btns.appendChild(editBtn);
+      btns.appendChild(deleteBtn);
+
+      li.appendChild(taskSpan);
+      li.appendChild(btns);
+
+      taskList.appendChild(li);
+
+      taskInput.value = "";
+      taskDateTime.value = "";
+    }
+  </script>
+</body>
+</html>
