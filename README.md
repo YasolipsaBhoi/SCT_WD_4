@@ -31,3 +31,20 @@ SCT_WD_4/
 ├── script.js # Functionality (task logic)
 
 └── README.md
+
+---
+
+## 🛠️ Technologies Used
+
+- **HTML5**  
+- **CSS3 (Flexbox, Animations, Gradients)**  
+- **JavaScript (DOM Manipulation, Event Handling)**  
+
+---
+
+## 📦 How to Run the Project
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/YasolipsaBhoi/SCT_WD_4.git
+
