@@ -23,8 +23,11 @@ This project is part of **SkillCraft Technology – Task 4 (Web Development)**.
 
 ## 📂 Project Structure
 SCT_WD_4/
-│
+
 ├── index.html # Main HTML file
+
 ├── style.css # Styling (neon theme, animations)
+
 ├── script.js # Functionality (task logic)
+
 └── README.md
